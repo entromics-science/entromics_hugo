@@ -1,0 +1,157 @@
+<!doctype html>
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg:#faf8f1"
+  lang="en-us"
+  dir="ltr"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Entromics - Entromics</title>
+
+  
+  <meta name="theme-color" />
+
+  <meta name="description" content="Genome sequence contains information, which - when used as input into exact thermodynamic formula - is recalculated into energy, needed to incorporate variant base into any specific position in the DNA strand. This lead to discovery of coherence for these incorporation entropies along the complete genome sequence. Short explanation of this phenomenon and how it is quantitatively characterized can be found here. For more details see our paper &ldquo;Entromics &ndash; thermodynamics of sequence dependent base incorporation into DNA reveals novel long-distance genome organization&rdquo;." />
+  <meta name="author" content="Entromics" /><link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.e86ae67e01e2d2055106abf72be7357c950191060e5f159f24e2790fd8237e8c.css" integrity="sha256-6GrmfgHi0gVRBqv3K&#43;c1fJUBkQYOXxWfJOJ5D9gjfow=" />
+
+  
+  <link rel="preload" as="image" href="http://localhost:1313/theme.png" />
+
+  
+
+  
+
+  <script
+    defer
+    src="http://localhost:1313/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad()"
+  ></script>
+
+  
+  <link
+    rel="icon"
+    href="http://localhost:1313/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="http://localhost:1313/apple-touch-icon.png"
+  />
+
+  <meta name="generator" content="Hugo 0.157.0">
+</head>
+<body
+    class="bg-(--bg) text-black antialiased duration-200 ease-out [-webkit-tap-highlight-color:transparent] dark:text-white"
+  ><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
+    <a
+      class="-translate-y-[1px] text-2xl font-medium"
+      href="http://localhost:1313/"
+      >Entromics</a
+    >
+    <div
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? "rgb(0 0 0 / 85%)" : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center bg-(--bg) pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:bg-transparent! lg:pb-0 lg:transition-none"
+  >
+  </div>
+</header>
+<main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    ><article>
+  <header class="mb-14">
+    <h1 class="my-0! pb-2.5">Entromics</h1></header>
+
+  <section><p>Genome sequence contains information, which - when used as input into exact thermodynamic formula - is recalculated into energy, needed to incorporate variant base into any specific position in the DNA strand. This lead to discovery of coherence for these incorporation entropies along the complete genome sequence. Short explanation of this phenomenon and how it is quantitatively characterized can be found here. For more details see our paper &ldquo;Entromics &ndash; thermodynamics of sequence dependent base incorporation into DNA reveals novel long-distance genome organization&rdquo;.</p>
+<p>With personal genotype weighted by incorporation entropy (IE) and IE coherence (IEC) differences between the personal and consensus genome or gene, it is possible to find &ldquo;intuitive&rdquo; relationships to function and model them quantitatively. These models of relationships between the personal genotype-dependent IE and IEC difference patterns then provide personalized predictors of the gene-related function or phenotype. Example below shows that genetic variants of serotonin receptor HTR2A are related to depression not by presence or absence of some SNP alleles and their combinations. Instead, the prediction of the psychological impact of the personal variants of this gene is a &ldquo;second order&rdquo;. The role of personal variants in promoting depression is derived from the deviation of the personal change of the consensus IEC from the general dependence of IEC difference on the allele number for an individual.</p>
+<p>Importantly, representation of personal genome by incorporation entropy and entromic coherence is the only apporach, allowing direct QUANTITATIVE characterization of the personal genome status in the individual clinical, behavioral, psychological, socio-economical or lifestyle contexts.</p>
+<p>Entromics is integral component of the personalized network medicine platform. Connected by the optimized information entropy background, PNM approach guarantees improvement in project results, new hypotheses generation, allows for more analyses from the same data. More results are therefore obtained for the same project cost. All those advantages minimize the probability of project failure.</p>
+</section>
+
+  </article></main><footer
+  class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
+>
+  <div class="mr-auto">&copy;2026
+    <a class="link" href="http://localhost:1313/">Entromics</a></div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+</footer>
+</body>
+</html>

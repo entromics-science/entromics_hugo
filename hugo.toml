@@ -1,0 +1,7 @@
+baseURL = 'https://www.entromics.com/'
+languageCode = 'en-us'
+title = 'Entromics'
+theme = 'paper'
+
+[markup.goldmark.renderer]
+unsafe = true
