@@ -1,0 +1,1523 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Network Phenotyping Strategy classifier</title>
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css"/>
+	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
+	<script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
+	<script language="javascript" type="text/javascript" src="js/jquery.flot.min.js"></script>
+</head>
+<body>
+<!-- user profile -->
+  <div id="user_prof">
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="home.html">Personalized Network Medicine</a>
+
+          <div class="nav-collapse collapse navbar-responsive-collapse">
+            <ul class="user_icon nav pull-right">
+              <li class="divider-vertical"></li>
+              <li class="dropdown">
+                <a href="#" class='dropdown-toggle drop-trigger-btn' data-toggle="dropdown" ><i class="icon-user"></i>&nbsp;&nbsp;PP&nbsp;<b class="caret"></b></a>
+                <ul class="dropdown-menu user_prof">
+                  <li class="prof_align"><h5>PP <em class="muted gender_font">M</em></h5></li>
+                  <li class="prof_align">Research</li>
+                  <li class="prof_align">University of Pittsburgh</li>
+                  <li class="prof_align">Academic Organizaiton</li>
+                  <li class="mail_align"><address><a href="mailto:#">pep9@pitt.edu</a></address></li>
+                  <li class="divider"></li>
+                  <li>
+                    <p>
+                      <a href="#prof_edit" id="editprof_btn" class="btn btn-small prof_btn2">Edit Profile</a>
+                      <a href="#" class="btn btn-small prof_btn2">Logout</a>
+                    </p>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-cont anay">
+    <div class='left-nav-wrapper'>
+      <ul class="left-nav-ul unstyled">
+
+        <li><a href="nps.html"><i class='icon-cogs'></i><span>Analysis</span></a></li>
+
+      </ul>
+    </div>
+
+
+    <div class="right-cont-wrapper">
+      <b class='arrow'></b>
+		<h2>Network Phenotyping Strategy classifier: S/L  phenotypes of HCC tumors</h2>
+
+		<div class="input-nps">
+			<form action="">
+				<div class="input-left">
+					<p><span class='i-name'>PVT</span><span class='i-v pvt' data-value='0'><span class='spinner'></span><span class='i-v-bg1'>+</span><span class='i-v-bg2'>-</span></span></p>
+					<p><span class='i-name'>Gender</span><span class='i-v gender' data-value='0'><span class='spinner'></span><span class='i-v-bg1'>F</span><span class='i-v-bg2'>M</span></span></p>
+					<p><span class='i-name'>Age</span><input class='age' value='0' type='text'></p>
+					<p><span class='i-name'>Alcohol</span><span class='i-v alc' data-value='0'><span class='spinner'></span><span class='i-v-bg1'>+</span><span class='i-v-bg2'>-</span></span></p>
+					<p><span class='i-name'>Year Diagnosed</span><input class='year' value='2013' type='text'></p>
+				</div>
+				<div class="input-mid">
+					<p><span class='i-name'>HepBV</span><span class='i-v hbv' data-value='0'><span class='spinner'></span><span class='i-v-bg1'>+</span><span class='i-v-bg2'>-</span></span></p>
+					<p><span class='i-name'>HepCV</span><span class='i-v hcv' data-value='0'><span class='spinner'></span><span class='i-v-bg1'>+</span><span class='i-v-bg2'>-</span></span></p>
+					<p><span class='i-name'>AST <span class='i-unit'>[IU/L]</span></span><input class='ast' value='0' type='text'></p>
+					<p><span class='i-name'>ALT <span class='i-unit'>[IU/L]</span></span><input class='alt' value='0' type='text'></p>
+					<p><span class='i-name'>Albumin <span class='i-unit'>[g/dL]</span></span><input class='alb' value='0' type='text'></p>
+
+				</div>
+				<div class="input-right">
+					<p><span class='i-name'>Hemoglobin <span class='i-unit'>[g/dL]</span></span><input class='hem' value='0' type='text'></p>
+					<p><span class='i-name'>Bilirubin <span class='i-unit'>[mg/dL]</span></span><input class='bil' value='0' type='text'></p>
+					<p><span class='i-name'>INR <span class='i-unit'>[%]</span></span><input class='inr' value='0' type='text'></p>
+					<p><span class='i-name'>Platelets <span class='i-unit'>[10^3/dL]</span></span><input class='pla' value='0' type='text'></p>
+					<p><span class='i-name'>AFP <span class='i-unit'>[ng/dL]</span></span><input class='afp' value='0' type='text'></p>
+				</div>
+				<div><button class='i-eva btn btn-info hide' type='text'>Evaluate</button></div>
+			</form>
+		</div>
+
+		<div class="demo-container">
+			<div id="placeholder" class="demo-placeholder"></div>
+			<div class="poss-bar">
+				<div class="small">Small</div>
+				<div class="large">Large</div>
+			</div>
+			<div class="c-list">
+				<span class="c" id="C1">C1</span>
+				<span class="c" id="C3">C3</span>
+				<span class="c" id="C5">C5</span>
+				<span class="c" id="C6">C6</span>
+				<span class="c" id="C8">C8</span>
+				<span class="c" id="C9">C9</span>
+				<span class="c" id="C12">C12</span>
+				<span class="c" id="C16">C16</span>
+				<span class="c" id="C18">C18</span>
+				<span class="c" id="Sum">Sum</span>
+			</div>
+			<div class="sum-ann">
+				<span class="sum-point"></span>
+			</div>
+			<div class="legend"><span class='right'>Diff Small Tumor</span><br><span class='left'>Diff Large Tumor</span></div>
+		</div>
+		<div class='clear'></div>
+		<div class="by-info">
+			<p>HCC NPS Classifer JavaScript Implemetation, powered by Flot.<br>4/23/2013 Neil Ding
+		</div>
+
+		<div class="single-p-set">
+			<div class="single-p">
+			    <svg width="400px" height="350px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			      <text class="title" x='0' y='0' font-size="30" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">C</text>
+			      <text class="title-no" x='0' y='0' font-size="18" font-weight="bold" font-family="arial" fill="#000">1</text>
+			      <text class="legend" x='-40' y='0' data-x='-40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">PVT</text>
+			      <text class="legend" x='-40' y='-20' data-x='-40' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">GENDER</text>
+			      <text class="legend" x='0' y='-25' data-x='0' data-y='-25' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AGE</text>
+			      <text class="legend" x='45' y='-20' data-x='45' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">ALCOHOL</text>
+			      <text class="legend" x='40' y='0' data-x='40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HBV</text>
+			      <text class="legend" x='38' y='15' data-x='38' data-y='15' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HCV</text>
+			      <text class="legend" x='45' y='30' data-x='45' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AST / ALT</text>
+			      <text class="legend" x='0' y='35' data-x='0' data-y='35' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">Alb / Hemo</text>
+			      <text class="legend" x='-42' y='30' data-x='-42' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">BILI / INR</text>
+			      <text class="legend" x='-35' y='40' data-x='-35' data-y='40' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">platelets / AFP</text>
+
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+
+			      <path class="model-line" d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#000" stroke-width="10"/>
+			      <path class='user-line' d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#f00" stroke-width="5"/>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">F</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">O</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">M</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">Y</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			    </svg>
+			    <p class='desc'>Diff: <b>0</b></p>
+		    </div>
+
+			<div class="single-p">
+			    <svg width="400px" height="350px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			      <text class="title" x='0' y='0' font-size="30" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">C</text>
+			      <text class="title-no" x='0' y='0' font-size="18" font-weight="bold" font-family="arial" fill="#000">3</text>
+			      <text class="legend" x='-40' y='0' data-x='-40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">PVT</text>
+			      <text class="legend" x='-40' y='-20' data-x='-40' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">GENDER</text>
+			      <text class="legend" x='0' y='-25' data-x='0' data-y='-25' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AGE</text>
+			      <text class="legend" x='45' y='-20' data-x='45' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">ALCOHOL</text>
+			      <text class="legend" x='40' y='0' data-x='40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HBV</text>
+			      <text class="legend" x='38' y='15' data-x='38' data-y='15' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HCV</text>
+			      <text class="legend" x='45' y='30' data-x='45' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AST / ALT</text>
+			      <text class="legend" x='0' y='35' data-x='0' data-y='35' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">Alb / Hemo</text>
+			      <text class="legend" x='-42' y='30' data-x='-42' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">BILI / INR</text>
+			      <text class="legend" x='-35' y='40' data-x='-35' data-y='40' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">platelets / AFP</text>
+
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+
+			      <path class="model-line" d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#000" stroke-width="10"/>
+			      <path class='user-line' d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#f00" stroke-width="5"/>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">F</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">O</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">M</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">Y</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			    </svg>
+			    <p class='desc'>Diff: <b>0</b></p>
+		    </div>
+
+
+			<div class="single-p">
+			    <svg width="400px" height="350px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			      <text class="title" x='0' y='0' font-size="30" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">C</text>
+			      <text class="title-no" x='0' y='0' font-size="18" font-weight="bold" font-family="arial" fill="#000">6</text>
+			      <text class="legend" x='-40' y='0' data-x='-40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">PVT</text>
+			      <text class="legend" x='-40' y='-20' data-x='-40' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">GENDER</text>
+			      <text class="legend" x='0' y='-25' data-x='0' data-y='-25' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AGE</text>
+			      <text class="legend" x='45' y='-20' data-x='45' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">ALCOHOL</text>
+			      <text class="legend" x='40' y='0' data-x='40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HBV</text>
+			      <text class="legend" x='38' y='15' data-x='38' data-y='15' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HCV</text>
+			      <text class="legend" x='45' y='30' data-x='45' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AST / ALT</text>
+			      <text class="legend" x='0' y='35' data-x='0' data-y='35' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">Alb / Hemo</text>
+			      <text class="legend" x='-42' y='30' data-x='-42' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">BILI / INR</text>
+			      <text class="legend" x='-35' y='40' data-x='-35' data-y='40' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">platelets / AFP</text>
+
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+
+			      <path class="model-line" d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#000" stroke-width="10"/>
+			      <path class='user-line' d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#f00" stroke-width="5"/>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">F</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">O</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">M</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">Y</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			    </svg>
+			    <p class='desc'>Diff: <b>0</b></p>
+		    </div>
+
+
+			<div class="single-p">
+			    <svg width="400px" height="350px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			      <text class="title" x='0' y='0' font-size="30" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">C</text>
+			      <text class="title-no" x='0' y='0' font-size="18" font-weight="bold" font-family="arial" fill="#000">8</text>
+			      <text class="legend" x='-40' y='0' data-x='-40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">PVT</text>
+			      <text class="legend" x='-40' y='-20' data-x='-40' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">GENDER</text>
+			      <text class="legend" x='0' y='-25' data-x='0' data-y='-25' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AGE</text>
+			      <text class="legend" x='45' y='-20' data-x='45' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">ALCOHOL</text>
+			      <text class="legend" x='40' y='0' data-x='40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HBV</text>
+			      <text class="legend" x='38' y='15' data-x='38' data-y='15' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HCV</text>
+			      <text class="legend" x='45' y='30' data-x='45' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AST / ALT</text>
+			      <text class="legend" x='0' y='35' data-x='0' data-y='35' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">Alb / Hemo</text>
+			      <text class="legend" x='-42' y='30' data-x='-42' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">BILI / INR</text>
+			      <text class="legend" x='-35' y='40' data-x='-35' data-y='40' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">platelets / AFP</text>
+
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+
+			      <path class="model-line" d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#000" stroke-width="10"/>
+			      <path class='user-line' d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#f00" stroke-width="5"/>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">F</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">O</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">M</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">Y</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			    </svg>
+			    <p class='desc'>Diff: <b>0</b></p>
+		    </div>
+
+
+			<div class="single-p">
+			    <svg width="400px" height="350px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			      <text class="title" x='0' y='0' font-size="30" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">C</text>
+			      <text class="title-no" x='0' y='0' font-size="18" font-weight="bold" font-family="arial" fill="#000">16</text>
+			      <text class="legend" x='-40' y='0' data-x='-40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">PVT</text>
+			      <text class="legend" x='-40' y='-20' data-x='-40' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">GENDER</text>
+			      <text class="legend" x='0' y='-25' data-x='0' data-y='-25' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AGE</text>
+			      <text class="legend" x='45' y='-20' data-x='45' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">ALCOHOL</text>
+			      <text class="legend" x='40' y='0' data-x='40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HBV</text>
+			      <text class="legend" x='38' y='15' data-x='38' data-y='15' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HCV</text>
+			      <text class="legend" x='45' y='30' data-x='45' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AST / ALT</text>
+			      <text class="legend" x='0' y='35' data-x='0' data-y='35' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">Alb / Hemo</text>
+			      <text class="legend" x='-42' y='30' data-x='-42' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">BILI / INR</text>
+			      <text class="legend" x='-35' y='40' data-x='-35' data-y='40' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">platelets / AFP</text>
+
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+
+			      <path class="model-line" d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#000" stroke-width="10"/>
+			      <path class='user-line' d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#f00" stroke-width="5"/>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">F</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">O</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">M</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">Y</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			    </svg>
+			    <p class='desc'>Diff: <b>0</b></p>
+		    </div>
+
+			<div class="clear"></div>
+
+			<div class="single-p small">
+			    <svg width="400px" height="350px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			      <text class="title" x='0' y='0' font-size="30" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">C</text>
+			      <text class="title-no" x='0' y='0' font-size="18" font-weight="bold" font-family="arial" fill="#000">5</text>
+			      <text class="legend" x='-40' y='0' data-x='-40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">PVT</text>
+			      <text class="legend" x='-40' y='-20' data-x='-40' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">GENDER</text>
+			      <text class="legend" x='0' y='-25' data-x='0' data-y='-25' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AGE</text>
+			      <text class="legend" x='45' y='-20' data-x='45' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">ALCOHOL</text>
+			      <text class="legend" x='40' y='0' data-x='40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HBV</text>
+			      <text class="legend" x='38' y='15' data-x='38' data-y='15' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HCV</text>
+			      <text class="legend" x='45' y='30' data-x='45' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AST / ALT</text>
+			      <text class="legend" x='0' y='35' data-x='0' data-y='35' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">Alb / Hemo</text>
+			      <text class="legend" x='-42' y='30' data-x='-42' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">BILI / INR</text>
+			      <text class="legend" x='-35' y='40' data-x='-35' data-y='40' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">platelets / AFP</text>
+
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+
+			      <path class="model-line" d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#999" stroke-width="10"/>
+			      <path class='user-line' d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#f00" stroke-width="5"/>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">F</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">O</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">M</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">Y</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			    </svg>
+			    <p class='desc'>Diff: <b>0</b></p>
+		    </div>
+
+
+			<div class="single-p small">
+			    <svg width="400px" height="350px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			      <text class="title" x='0' y='0' font-size="30" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">C</text>
+			      <text class="title-no" x='0' y='0' font-size="18" font-weight="bold" font-family="arial" fill="#000">9</text>
+			      <text class="legend" x='-40' y='0' data-x='-40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">PVT</text>
+			      <text class="legend" x='-40' y='-20' data-x='-40' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">GENDER</text>
+			      <text class="legend" x='0' y='-25' data-x='0' data-y='-25' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AGE</text>
+			      <text class="legend" x='45' y='-20' data-x='45' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">ALCOHOL</text>
+			      <text class="legend" x='40' y='0' data-x='40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HBV</text>
+			      <text class="legend" x='38' y='15' data-x='38' data-y='15' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HCV</text>
+			      <text class="legend" x='45' y='30' data-x='45' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AST / ALT</text>
+			      <text class="legend" x='0' y='35' data-x='0' data-y='35' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">Alb / Hemo</text>
+			      <text class="legend" x='-42' y='30' data-x='-42' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">BILI / INR</text>
+			      <text class="legend" x='-35' y='40' data-x='-35' data-y='40' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">platelets / AFP</text>
+
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+
+			      <path class="model-line" d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#999" stroke-width="10"/>
+			      <path class='user-line' d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#f00" stroke-width="5"/>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">F</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">O</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">M</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">Y</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			    </svg>
+			    <p class='desc'>Diff: <b>0</b></p>
+		    </div>
+
+
+			<div class="single-p small">
+			    <svg width="400px" height="350px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			      <text class="title" x='0' y='0' font-size="30" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">C</text>
+			      <text class="title-no" x='0' y='0' font-size="18" font-weight="bold" font-family="arial" fill="#000">12</text>
+			      <text class="legend" x='-40' y='0' data-x='-40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">PVT</text>
+			      <text class="legend" x='-40' y='-20' data-x='-40' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">GENDER</text>
+			      <text class="legend" x='0' y='-25' data-x='0' data-y='-25' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AGE</text>
+			      <text class="legend" x='45' y='-20' data-x='45' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">ALCOHOL</text>
+			      <text class="legend" x='40' y='0' data-x='40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HBV</text>
+			      <text class="legend" x='38' y='15' data-x='38' data-y='15' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HCV</text>
+			      <text class="legend" x='45' y='30' data-x='45' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AST / ALT</text>
+			      <text class="legend" x='0' y='35' data-x='0' data-y='35' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">Alb / Hemo</text>
+			      <text class="legend" x='-42' y='30' data-x='-42' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">BILI / INR</text>
+			      <text class="legend" x='-35' y='40' data-x='-35' data-y='40' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">platelets / AFP</text>
+
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+
+			      <path class="model-line" d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#999" stroke-width="10"/>
+			      <path class='user-line' d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#f00" stroke-width="5"/>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">F</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">O</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">M</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">Y</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			    </svg>
+			    <p class='desc'>Diff: <b>0</b></p>
+		    </div>
+
+
+			<div class="single-p small">
+			    <svg width="400px" height="350px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			      <text class="title" x='0' y='0' font-size="30" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">C</text>
+			      <text class="title-no" x='0' y='0' font-size="18" font-weight="bold" font-family="arial" fill="#000">18</text>
+			      <text class="legend" x='-40' y='0' data-x='-40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">PVT</text>
+			      <text class="legend" x='-40' y='-20' data-x='-40' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">GENDER</text>
+			      <text class="legend" x='0' y='-25' data-x='0' data-y='-25' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AGE</text>
+			      <text class="legend" x='45' y='-20' data-x='45' data-y='-20' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">ALCOHOL</text>
+			      <text class="legend" x='40' y='0' data-x='40' data-y='0' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HBV</text>
+			      <text class="legend" x='38' y='15' data-x='38' data-y='15' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">HCV</text>
+			      <text class="legend" x='45' y='30' data-x='45' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">AST / ALT</text>
+			      <text class="legend" x='0' y='35' data-x='0' data-y='35' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">Alb / Hemo</text>
+			      <text class="legend" x='-42' y='30' data-x='-42' data-y='30' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">BILI / INR</text>
+			      <text class="legend" x='-35' y='40' data-x='-35' data-y='40' font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">platelets / AFP</text>
+
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18 0 0)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+			      <rect class="bar" x="150" y="117" width="80" height="32" rx="5" ry="5"
+			        transform="rotate(18)" style="fill: transparent; stroke: black; stroke-width: 4;"/>
+
+			      <path class="model-line" d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#999" stroke-width="10"/>
+			      <path class='user-line' d="M250 0
+			               L396.95 47.75
+			               L487.76 172.74
+			               L487.76 327.25
+			               L396.95 452.25
+			               L250 500
+			               L103.05 452.25
+			               L12.24 327.25
+			               L12.24 172.74
+			               L103.05 47.75
+			               Z" fill="transparent" stroke="#f00" stroke-width="5"/>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">F</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">O</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="25" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">-</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+			      <circle class='outer' cx="30" cy="156" r="15" stroke="#000" fill="#fff" stroke-width="2"/>
+			      <text class='outer-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#000">L</text>
+
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">M</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">Y</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="20" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">+</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			      <circle class='inner' cx="30" cy="156" r="15" stroke="#000" fill="#000" stroke-width="2"/>
+			      <text class='inner-text' x="30" y="170" font-size="15" font-weight="bold" font-family="arial" text-anchor="middle" fill="#fff">H</text>
+			    </svg>
+			    <p class='desc'>Diff: <b>0</b></p>
+		    </div>
+
+		</div>
+	</div>
+
+  </div>
+
+	<script type="text/javascript">
+
+	var round2d = function(num){
+		return Math.round(num * 100) / 100;
+	};
+	var round3d = function(num){
+		return Math.round(num * 1000) / 1000;
+	};
+
+	function log10(val) {
+	  return Math.log(val) / Math.LN10;
+	}
+
+    var drawSVG = function(input){
+      var mX = 85;
+      var mY = 45;
+      var radius = 130;
+      var innerRadius = 85;
+      var circleR = 10;
+
+      var outerPoints = [], innerPoints = [];
+
+      outerPoints[0] = [radius-Math.cos(Math.PI/10)*radius, radius-Math.sin(Math.PI/10)*radius];
+      outerPoints[1] = [radius-Math.sin(Math.PI/5)*radius, radius-Math.cos(Math.PI/5)*radius];
+      outerPoints[2] = [radius, 0];
+      outerPoints[3] = [radius+Math.sin(Math.PI/5)*radius, radius-Math.cos(Math.PI/5)*radius];
+      outerPoints[4] = [radius+Math.cos(Math.PI/10)*radius, radius-Math.sin(Math.PI/10)*radius];
+      outerPoints[5] = [radius+Math.cos(Math.PI/10)*radius, radius+Math.sin(Math.PI/10)*radius];
+      outerPoints[6] = [radius+Math.sin(Math.PI/5)*radius, radius+Math.cos(Math.PI/5)*radius];
+      outerPoints[7] = [radius, radius*2];
+      outerPoints[8] = [radius-Math.sin(Math.PI/5)*radius, radius+Math.cos(Math.PI/5)*radius];
+      outerPoints[9] = [radius-Math.cos(Math.PI/10)*radius, radius+Math.sin(Math.PI/10)*radius];
+
+      innerPoints[0] = [innerRadius-Math.cos(Math.PI/10)*innerRadius, innerRadius-Math.sin(Math.PI/10)*innerRadius];
+      innerPoints[1] = [innerRadius-Math.sin(Math.PI/5)*innerRadius, innerRadius-Math.cos(Math.PI/5)*innerRadius];
+      innerPoints[2] = [innerRadius, 0];
+      innerPoints[3] = [innerRadius+Math.sin(Math.PI/5)*innerRadius, innerRadius-Math.cos(Math.PI/5)*innerRadius];
+      innerPoints[4] = [innerRadius+Math.cos(Math.PI/10)*innerRadius, innerRadius-Math.sin(Math.PI/10)*innerRadius];
+      innerPoints[5] = [innerRadius+Math.cos(Math.PI/10)*innerRadius, innerRadius+Math.sin(Math.PI/10)*innerRadius];
+      innerPoints[6] = [innerRadius+Math.sin(Math.PI/5)*innerRadius, innerRadius+Math.cos(Math.PI/5)*innerRadius];
+      innerPoints[7] = [innerRadius, innerRadius*2];
+      innerPoints[8] = [innerRadius-Math.sin(Math.PI/5)*innerRadius, innerRadius+Math.cos(Math.PI/5)*innerRadius];
+      innerPoints[9] = [innerRadius-Math.cos(Math.PI/10)*innerRadius, innerRadius+Math.sin(Math.PI/10)*innerRadius];
+
+      var mR = radius - innerRadius;
+      for (var i = outerPoints.length - 1; i >= 0; i--) {
+        outerPoints[i][0] += mX;
+        outerPoints[i][1] += mY;
+        innerPoints[i][0] += mX + mR;
+        innerPoints[i][1] += mY + mR;
+      };
+
+      var input = input || [1, 1, 0, 1, 0, 0, 0, 0, 1, 0];
+      var userLine = '';
+      for(var i=0; i<input.length; i++) {
+        if(i == 0){
+          userLine += 'M';
+        }else{
+          userLine += 'L';
+        }
+        if(i == 1 || i == 2) {
+        	userLine += input[i]==1 ? outerPoints[i][0] +' '+outerPoints[i][1] + ' ' : innerPoints[i][0] +' '+innerPoints[i][1] + ' ' ;
+        	continue;
+        }
+        userLine += input[i]==0 ? outerPoints[i][0] +' '+outerPoints[i][1] + ' ' : innerPoints[i][0] +' '+innerPoints[i][1] + ' ' ;
+      }
+      userLine += ' Z';
+      console.log(userLine);
+
+      var svgs = $('svg');
+
+      svgs.each(function(){
+
+        // draw user line
+        $(this).find('path.user-line').attr('d', userLine);
+
+        var points = [];
+        for (var i = 0; i < outerPoints.length; i++) {
+          points[i] = outerPoints[i];
+        }
+
+        var getLastestD = function(){
+          //console.log(points);
+          var d = 'M'+points[0][0] +' '+points[0][1] + ' ' +
+                  'L'+points[1][0] +' '+points[1][1] + ' ' +
+                  'L'+points[2][0] +' '+points[2][1] + ' ' +
+                  'L'+points[3][0] +' '+points[3][1] + ' ' +
+                  'L'+points[4][0] +' '+points[4][1] + ' ' +
+                  'L'+points[5][0] +' '+points[5][1] + ' ' +
+                  'L'+points[6][0] +' '+points[6][1] + ' ' +
+                  'L'+points[7][0] +' '+points[7][1] + ' ' +
+                  'L'+points[8][0] +' '+points[8][1] + ' ' +
+                  'L'+points[9][0] +' '+points[9][1] + ' ' +
+                  'Z';
+          return d;
+        };
+
+        var title = $(this).find('text.title');
+        var titleNo = $(this).find('text.title-no');
+        var legends = $(this).find('text.legend');
+        var bars = $(this).find('rect.bar');
+        var outerCircle = $(this).find('circle.outer');
+        var outerCircleText = $(this).find('text.outer-text');
+        var innerCircle = $(this).find('circle.inner');
+        var innerCircleText = $(this).find('text.inner-text');
+        var rotateDegrees = [18, 54, 90, 126, 162, -162, -126, -90, -54, -18];
+
+        title.attr('x', radius + mX - 5);
+        title.attr('y', radius + mY + 5);
+        titleNo.attr('x', radius + mX + 5);
+        titleNo.attr('y', radius + mY + 10);
+        for (var i = 0; i < outerCircle.length; i++) {
+          $(outerCircle[i]).attr('r', circleR);
+          $(outerCircle[i]).attr('cx', points[i][0]);
+          $(outerCircle[i]).attr('cy', points[i][1]);
+          $(outerCircleText[i]).attr('x', points[i][0]);
+          $(outerCircleText[i]).attr('y', points[i][1]+6);
+
+          $(innerCircle[i]).attr('r', circleR);
+          $(innerCircle[i]).attr('cx', innerPoints[i][0]);
+          $(innerCircle[i]).attr('cy', innerPoints[i][1]);
+          $(innerCircleText[i]).attr('x', innerPoints[i][0]);
+          $(innerCircleText[i]).attr('y', innerPoints[i][1]+6);
+
+          $(bars[i]).attr('transform', 'rotate('+rotateDegrees[i]+' '+points[i][0]+' '+points[i][1]+')');
+          $(bars[i]).attr('x', points[i][0] - 18);
+          $(bars[i]).attr('y', points[i][1] - 17);
+
+          $(legends[i]).attr('x', points[i][0] + parseInt($(legends[i]).data('x')));
+          $(legends[i]).attr('y', points[i][1] + parseInt($(legends[i]).data('y')));
+        };
+
+        switch(titleNo.text()){
+          case '1':
+            points[1] = innerPoints[1];
+            points[4] = innerPoints[4];
+            break;
+          case '3':
+            points[1] = innerPoints[1];
+            points[2] = innerPoints[2];
+            points[5] = innerPoints[5];
+            points[6] = innerPoints[6];
+            points[8] = innerPoints[8];
+            break;
+          case '6':
+            points[3] = innerPoints[3];
+            points[4] = innerPoints[4];
+            points[5] = innerPoints[5];
+            points[7] = innerPoints[7];
+            points[8] = innerPoints[8];
+            break;
+          case '8':
+            points[1] = innerPoints[1];
+            points[2] = innerPoints[2];
+            points[7] = innerPoints[7];
+            points[9] = innerPoints[9];
+            break;
+          case '16':
+            points[0] = innerPoints[0];
+            points[2] = innerPoints[2];
+            points[3] = innerPoints[3];
+            points[5] = innerPoints[5];
+            points[7] = innerPoints[7];
+            points[9] = innerPoints[9];
+            break;
+          case '5':
+            points[0] = innerPoints[0];
+            points[1] = innerPoints[1];
+            points[3] = innerPoints[3];
+            points[6] = innerPoints[6];
+            points[8] = innerPoints[8];
+            points[9] = innerPoints[9];
+            break;
+          case '9':
+            points[0] = innerPoints[0];
+            points[1] = innerPoints[1];
+            points[2] = innerPoints[2];
+            points[3] = innerPoints[3];
+            points[4] = innerPoints[4];
+            points[6] = innerPoints[6];
+            points[7] = innerPoints[7];
+            points[9] = innerPoints[9];
+            break;
+          case '12':
+            points[0] = innerPoints[0];
+            points[2] = innerPoints[2];
+            points[3] = innerPoints[3];
+            points[4] = innerPoints[4];
+            points[5] = innerPoints[5];
+            points[8] = innerPoints[8];
+            points[9] = innerPoints[9];
+            break;
+          case '18':
+            points[0] = innerPoints[0];
+            points[3] = innerPoints[3];
+            points[5] = innerPoints[5];
+            points[7] = innerPoints[7];
+            points[8] = innerPoints[8];
+            points[9] = innerPoints[9];
+            break;
+        }
+        $(this).find('path.model-line').attr('d', getLastestD());
+      });
+    };
+
+    var setSingleDesc = function(input) {
+    	var descs = $('.desc');
+    	var adjustedInput = [];
+    	adjustedInput[0] = input[0];
+    	adjustedInput[1] = input[1];
+    	adjustedInput[2] = input[3];
+    	adjustedInput[3] = input[4];
+    	adjustedInput[4] = input[7];
+    	adjustedInput[5] = input[2];
+    	adjustedInput[6] = input[5];
+    	adjustedInput[7] = input[6];
+    	adjustedInput[8] = input[8];
+    	for(var i=0; i<descs.length; i++) {
+    		$(descs[i]).children('b').text(adjustedInput[i]);
+    	}
+    };
+
+	var plotNPS = function(input) {
+
+		var d1 = [];
+		for (var i = -7; i <= 7; i+=0.2) {
+			//d1.push([i, Math.sin(i)]);
+			d1.push([i, 1/(1+Math.exp(-i))]);
+		}
+
+		var rawData = input;
+		var weight = [-0.2258, -0.2137, 0.1876, -0.5407, -0.0968, 0.2162, 0.1918, -0.3499, 0.3719];
+		var lines = [];
+		var subResult = 0;
+		var sum = 0;
+		var barColor = "rgba(203,75,75, 0.7)";
+		var lineColor = "rgba(0,110,202, 0.7)";
+		var annots = $('.c-list span');
+		var annoMove;
+		//console.log(annots[0]);
+		for (var i = 0; i < rawData.length; i++) {
+			subResult = rawData[i]*weight[i];
+			if(subResult >= 0) {
+				annoMove = 17;
+				barColor = "rgba(203,75,75, 0.7)";
+			}else{
+				annoMove = -17;
+				barColor = "rgba(77,167,77, 0.7)";
+				$(annots[i]).css({'text-align': 'right'});
+			}
+			lines[i] = {
+				data: [[0, 0.1*(rawData.length-i)], [subResult, 0.1*(rawData.length-i)]],
+				color: barColor,
+				lines: {show: true, lineWidth: 25},
+				shadowSize: 0
+			};
+			sum += subResult;
+			// console.log(annoMove);
+			// console.log(i+": "+(350+subResult*10)+'px');
+			$(annots[i]).html(annots[i].id + "<br>"+round3d(subResult)).css({'left': (350+annoMove+(subResult)*48)+'px', 'top': (65+35*i)+'px'});
+		};
+
+		sum = sum - 2.1034;
+
+		var sumLine = {
+			data: [[0, 0.5], [sum, 0.5]],
+			color: lineColor,
+			lines: {show: true, lineWidth: 6},
+			shadowSize: 0
+		};
+		if(sum >= 0) {
+			annoMove = 17;
+		}else{
+			annoMove = -17;
+		}
+		$(annots).last().html($(annots).last().prop('id') + "<br>"+round3d(sum)).css({'left': (350+annoMove+(sum)*48)+'px', 'top': (65+35*4)+'px'});
+
+		var possbility = 1/(1+Math.exp(-sum));
+
+		var possLine = {
+			data: [[sum, -0.1], [sum, 1.1]],
+			color: lineColor,
+			lines: {show: true, lineWidth: 1},
+			shadowSize: 0
+		};
+
+		var possLineX = {
+			data: [[-7, possbility], [6.8, possbility]],
+			color: lineColor,
+			lines: {show: true, lineWidth: 1},
+			shadowSize: 0
+		};
+
+		var possPoint = {
+			data: [[sum, possbility]],
+			color: lineColor,
+			lines: {show: false},
+			points: {show: true},
+			shadowSize: 0
+		};
+
+		var markings = [
+			{ color: "#333", lineWidth: 1, xaxis: { from: 0, to: 0 } },
+			{ color: "#333", lineWidth: 1, yaxis: { from: 0, to: 0 } },
+			{ color: "#333", lineWidth: 1, yaxis: { from: 0.5, to: 0.5 } },
+			{ color: "rgba(77,167,77, 0.1)", lineWidth: 1, yaxis: { from: possbility, to: 1 } },
+			{ color: "rgba(203,75,75, 0.1)", lineWidth: 1, yaxis: { from: 0, to: possbility } },
+		];
+
+		$.plot("#placeholder", [{
+				data: d1,
+				color: "rgba(237,194,64,.6)",
+				shadowSize: 0
+			},
+			lines[0], lines[1], lines[2],
+			lines[3], lines[4], lines[5],
+			lines[6], lines[7], lines[8],
+			sumLine, possLine, possLineX, possPoint], {
+			yaxis: { min: -0.1, max: 1.1 },
+			grid: { markings: markings }
+		});
+
+		$('.sum-point').text('('+round3d(sum)+', '+round3d(possbility)+')').css({'left':(370 + sum*48)+'px', 'top':(395-possbility*350)+'px'});
+
+		$('.poss-bar .large').height(possbility*100+'%')
+				.css({'font-size': possbility < 0.3 ? 10+'px' : (30*possbility)+'px'});
+
+		$('.poss-bar .small').height((1-possbility)*100+'%')
+				.css({'font-size': (1-possbility) < 0.3 ? 10+'px' : (30*(1-possbility))+'px'});
+
+		if (possbility > 0.1 && possbility < 0.9) {
+			$('.poss-bar .large').html('Large<br>'+round2d(possbility*100)+'%');
+			$('.poss-bar .small').html('Small<br>'+round2d((1-possbility)*100)+'%');
+		} else if (possbility <= 0.1) {
+			$('.poss-bar .large').html('Large');
+			$('.poss-bar .small').html('Small<br>'+round2d((1-possbility)*100)+'%');
+			if (possbility <= 0.03){
+				$('.poss-bar .large').html('');
+			}
+		} else if (possbility >= 0.9) {
+			$('.poss-bar .large').html('Large<br>'+round2d(possbility*100)+'%');
+			$('.poss-bar .small').html('Small');
+			if (possbility >= 0.97){
+				$('.poss-bar .small').html('');
+			}
+		}
+
+		return true;
+	};
+
+	var model =    [[0,0,1,0,1,0,0,0,0,0],
+					[0,0,0,0,0,1,1,0,1,0],
+					[1,0,1,1,0,0,1,0,1,1],
+					[0,1,1,1,1,1,0,1,1,0],
+					[0,0,0,0,0,0,0,1,0,1],
+					[1,0,0,1,1,0,1,1,0,1],
+					[1,1,0,1,1,1,0,0,1,1],
+					[1,1,0,1,0,1,0,1,0,1],
+					[1,1,1,1,0,1,0,1,1,1]];
+
+	var thresholds = [[2.023702512,1.907716224], [0.601942192, 1.17175796], [0.1887184837, 0.0601928235], [2.296074208, 4.46005664]];
+
+
+	function preprocess(rawInput){
+		var biInput = [], input = [];
+		year = [rawInput[10]>1991 ? 30:40, rawInput[10]>1991 ? 20:37];
+		biInput[0] = rawInput[0] == 1 ? 1 : 0;
+		biInput[1] = rawInput[1] == 1 ? 1 : 0;
+		biInput[2] = rawInput[2] > 55 ? 1 : 0;
+		biInput[3] = rawInput[3] == 1 ? 1 : 0;
+		biInput[4] = rawInput[4] == 1 ? 1 : 0;
+		biInput[5] = rawInput[5] == 1 ? 1 : 0;
+		biInput[6] = log10(1000*rawInput[6][0]/year[1]) > thresholds[0][0] || log10(1000*rawInput[6][1]/year[0]) > thresholds[0][1] ? 1 : 0;
+		biInput[7] = log10(rawInput[7][0]) > thresholds[1][0] || log10(rawInput[7][1]) > thresholds[1][1] ? 1 : 0;
+		biInput[8] = log10(rawInput[8][0]) > thresholds[2][0] || -log10(Math.pow(rawInput[8][1]/100, 1.29))/2.5 > thresholds[2][1] ? 1 : 0;
+		biInput[9] = log10(rawInput[9][0]) > thresholds[3][0] || log10(rawInput[9][1]) > thresholds[3][1] ? 1 : 0;
+
+		console.log(biInput);
+		drawSVG(biInput);
+
+		for (var i = 0; i < model.length; i++) {
+			var temp = 0;
+			for (var j = 0; j < biInput.length; j++) {
+				next = j+1 == biInput.length ? 0 : j+1;
+				temp += model[i][j] != biInput[j] || model[i][next] != biInput[next] ? -1 : 0;
+				//console.log(model[i][j]+' != '+biInput[j]+' || '+model[i][next]+' != '+biInput[next]+' -> '+temp);
+			};
+			input[i] = temp;
+			temp = 0;
+		};
+		setSingleDesc(input);
+		return input;
+	}
+
+	$('.input-nps input').keyup(function(){
+		$('.i-eva').click();
+	});
+
+	$('.i-v').click(function(){
+		var val = $(this).data('value');
+		var spinner = $(this).children('.spinner');
+		$(this).data('value', val == 0 ? 1 : 0);
+		spinner.animate({left: val == 0 ? "+=40" : "-=40"}, 200);
+
+		$('.i-eva').click();
+	});
+
+	$('.i-eva').click(function(e){
+		e.preventDefault();
+		var holder = {};
+		holder.pvt = $('.pvt').data('value');
+		holder.gender = $('.gender').data('value');
+		holder.age = $('.age').val();
+		holder.alc = $('.alc').data('value');
+		holder.hbv = $('.hbv').data('value');
+		holder.hcv = $('.hcv').data('value');
+		holder.ast = $('.ast').val();
+		holder.alt = $('.alt').val();
+		holder.alb = $('.alb').val();
+		holder.hem = $('.hem').val();
+		holder.bil = $('.bil').val();
+		holder.inr = $('.inr').val();
+		holder.pla = $('.pla').val();
+		holder.afp = $('.afp').val();
+		holder.year = $('.year').val();
+
+		var valid = true;
+
+		for (var prop in holder) {
+			$('.'+prop).removeClass('invalid-focus');
+			if(isNaN(holder[prop])){
+				console.log(prop+"="+holder[prop]);
+				$('.'+prop).addClass('invalid-focus').focus();
+				valid = false;
+			}
+			holder[prop] = parseFloat(holder[prop]);
+		};
+
+		if (!valid) {
+			return false;
+		}
+
+		var rawInput = [holder.pvt, holder.gender, holder.age, holder.alc, holder.hbv, holder.hcv, [holder.ast, holder.alt], [holder.alb, holder.hem], [holder.bil, holder.inr], [holder.pla, holder.afp], holder.year];
+
+		console.log(rawInput);
+		input = preprocess(rawInput);
+		console.log(input);
+		plotNPS(input);
+
+	});
+
+	// var rawInput = [1, 0, 64, 1, 0, 0, [5, 5], [3.6, 12.6], [1.2, 78], [110, 621], 2001];
+	// console.log(rawInput);
+
+	// var input = preprocess(rawInput);
+	// console.log(input);
+	// plotNPS(input);
+
+	$(document).ready(function(){
+		$('.i-eva').click();
+	});
+
+	</script>
+</body>
+</html>

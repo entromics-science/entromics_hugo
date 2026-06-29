@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "entromics-db": {
+      "command": "npx",
+      "args": ["-y", "@benborla29/mcp-server-mysql"],
+      "env": {
+        "MYSQL_HOST": "127.0.0.1",
+        "MYSQL_PORT": "3306",
+        "MYSQL_USER": "claude_ro",
+        "MYSQL_PASS": "u_r_who_u_choose_2_b",
+        "MYSQL_DB": "entromics",
+        "ALLOW_INSERT_OPERATION": "false",
+        "ALLOW_UPDATE_OPERATION": "false",
+        "ALLOW_DELETE_OPERATION": "false",
+        "ALLOW_DDL_OPERATION": "false"
+      }
+    }
+  }
+}

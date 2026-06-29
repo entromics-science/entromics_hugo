@@ -1,7 +1,52 @@
 baseURL = 'https://www.entromics.com/'
-languageCode = 'en-us'
+defaultContentLanguage = 'en'
 title = 'Entromics'
 theme = 'paper'
 
+[params]
+  name = 'Entromics'
+  bio = 'Medicine changing solutions.'
+  mainSections = ['page']
+
 [markup.goldmark.renderer]
 unsafe = true
+
+# Main navigation — order mirrors the original Drupal main menu.
+# "Contact" is intentionally omitted here and surfaced in the footer instead.
+[menu]
+  [[menu.main]]
+    name = 'What We Do Differently'
+    url = '/what-we-do-differently/'
+    weight = 1
+  [[menu.main]]
+    name = 'Personalized Network Medicine'
+    url = '/personalized-network-medicine/'
+    weight = 2
+  [[menu.main]]
+    name = 'Examples'
+    url = '/pnm/'
+    weight = 3
+  [[menu.main]]
+    name = 'Entromics'
+    url = '/entromics/'
+    weight = 4
+  [[menu.main]]
+    name = 'PNM and Adverse Effects'
+    url = '/pnm-and-adverse-effects-medicine/'
+    weight = 5
+  [[menu.main]]
+    name = 'Periodontal Disease Diagnosis'
+    url = '/comparative-efficiency-periodontal-disease-diagnosis/'
+    weight = 6
+  [[menu.main]]
+    name = 'Time to Disease Onset'
+    url = '/time-disease-onset-and-survival-prognosis-cancer/'
+    weight = 7
+  [[menu.main]]
+    name = 'Fisher Information Analysis'
+    url = '/fisher-information-analysis-syntax-score/'
+    weight = 8
+  [[menu.main]]
+    name = 'Discussions'
+    url = '/discussions/'
+    weight = 9

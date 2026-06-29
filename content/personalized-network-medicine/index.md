@@ -1,7 +1,7 @@
 +++
 title = 'Personalized Network Medicine (PNM)'
 date = 2026-03-08T07:07:07+01:00
-draft = true
+draft = false
 +++
 
 {{< figure
@@ -40,7 +40,7 @@ clinical factors impact on the complication risk.
   alt="Network graphs with coressponding cohorts"
 >}}
 
-See "EXAMPLE" section of this page for interactive implementation of PNM
+See the "[EXAMPLE](/pnm/)" section for an interactive implementation of the PNM
 diagnostic model, identifying aggressive tumors ("Large", associated with ~ 2.7
 times shorter survival) in hepatocellular cancer patients, using data from
 standard clinical screening details can be found in our paper
@@ -49,11 +49,11 @@ standard clinical screening details can be found in our paper
 Validation of the PNM diagnosis of liver tumor subtypes, example how PNM
 contributes to functional interpretation of the model and demonstration that
 HCC patients have different survival prognosis according to their PNM-tumor
-subtype is published in [Seminars in Oncology](http://www.entromics.com/sites/default/files/u2/SeminarsInOncology_EnvironmentHCC2014.pdf) (2014).
+subtype is published in [Seminars in Oncology](SeminarsInOncology_EnvironmentHCC2014.pdf) (2014).
 
 Third independent validation of the PNM HCC personalized tumor subtype
 diagnosis and relevance of the subtype identification for the survival
-prognosis is published in June 2014 issue 3 of [Seminars in Oncology](https://www.entromics.com/sites/default/files/u2/SeminarsInOncology_2014_Italy.pdf).
+prognosis is published in June 2014 issue 3 of [Seminars in Oncology](SeminarsInOncology_2014_Italy.pdf).
 
 {{< figure
   src="MELANOMA2.jpg"
