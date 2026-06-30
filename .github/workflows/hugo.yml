@@ -45,11 +45,13 @@ jobs:
         env:
           HUGO_ENVIRONMENT: production
           TZ: America/Chicago
+        # Use the baseURL from hugo.toml (https://www.entromics.com/).
+        # Do NOT override with steps.pages.outputs.base_url — it can resolve to
+        # http://, which produces mixed-content (blocked CSS/images) on the https site.
         run: |
           hugo \
             --gc \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --minify
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
